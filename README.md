@@ -1,5 +1,6 @@
 Gambar Diagram Toko Tas John :
-<img width="2783" height="2778" alt="Use Case Toko Tas John 1" src="https://github.com/user-attachments/assets/9d27a7a8-2ec1-47d3-b683-fd05b6a3f68a" />
+<img width="2783" height="2778" alt="Use Case Toko Tas John 1" src="https://github.com/user-attachments/assets/6557fab8-2e42-4d9a-8293-433414165026" />
+
 
 ALUR KINERJA SISTEM :
 1. LOGIN
