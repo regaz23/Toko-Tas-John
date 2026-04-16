@@ -1,5 +1,7 @@
-ALUR KINERJA SISTEM :
+Gambar Diagram Toko Tas John :
+<img width="2783" height="2778" alt="Use Case Toko Tas John 1" src="https://github.com/user-attachments/assets/9d27a7a8-2ec1-47d3-b683-fd05b6a3f68a" />
 
+ALUR KINERJA SISTEM :
 1. LOGIN
 2. MASUK KE DASHBOARD
 3. MEMASUKKAN KATEGORI LEWAT INSERT DATA
