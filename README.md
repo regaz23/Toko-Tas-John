@@ -11,8 +11,8 @@ Sebelum menjalankan aplikasi ini, pastikan Anda telah menginstal :
 ## ⚙️ Instalasi
 
 Jalankan perintah berikut untuk mengunduh dan mengatur aplikasi di terminal :
-
-```bash Install Dependencies Backend (PHP)
+# Install Dependencies Backend (PHP)
+```bash 
 composer install
 ```
 ```bash Install Dependencies Frontend (Node.js)
