@@ -1,3 +1,21 @@
+Aplikasi web berbasis jaringan lokal (localhost) ini dirancang khusus untuk Toko Tas John, dengan tujuan mempermudah pemilik dan karyawan dalam mengelola inventaris produk tas di toko. 
+
+## 📋 Prasyarat
+
+Sebelum menjalankan aplikasi ini, pastikan Anda telah menginstal :
+* PHP (Minimal versi 8.2)
+* Composer
+* Node.js
+* Database SQlite (DB browser)
+
+## ⚙️ Instalasi
+
+Jalankan perintah berikut untuk mengunduh dan mengatur aplikasi di terminal :
+
+```bash
+composer install
+```
+
 Gambar Diagram Toko Tas John :
 <img width="2783" height="2778" alt="Use Case Toko Tas John 1" src="https://github.com/user-attachments/assets/6557fab8-2e42-4d9a-8293-433414165026" />
 
