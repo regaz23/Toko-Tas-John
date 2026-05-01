@@ -12,20 +12,51 @@ Sebelum menjalankan aplikasi ini, pastikan Anda telah menginstal :
 
 Jalankan perintah berikut untuk mengunduh dan mengatur aplikasi di terminal :
 
-```bash
+```bash Install Dependencies Backend (PHP)
 composer install
 ```
+```bash Install Dependencies Frontend (Node.js)
+npm install
+```
+```bash Generate Application Key
+php artisan key:generate
+```
+```bash Setup & Migrate Database (SQLite)
+php artisan migrate
+```
+```bash Setup database.sqlite
+php artisan db:seed
+```
+## ⚙️ Menjalankan aplikasi 
 
-Gambar Diagram Toko Tas John :
+Jika sudah menjalankan perintah diatas, jalankan aplikasi dari terminal
+
+```bash Menjalankan Aplikasi di terminal pertama
+php artisan serve
+```
+```bash Menjalankan Aplikasi di terminal kedua
+npm run dev
+```
+
+## 🖼️ Gambar Diagram Toko Tas John :
+
 <img width="2783" height="2778" alt="Use Case Toko Tas John 1" src="https://github.com/user-attachments/assets/6557fab8-2e42-4d9a-8293-433414165026" />
 
 
-ALUR KINERJA SISTEM :
+## ➡️ ALUR KINERJA SISTEM :
 1. LOGIN
+```bash Admin
+id : admin@example.com
+pass : rega123
+```
+```bash Karyawan
+id : karyawan@example.com
+pass : karyawan123
+```
 2. MASUK KE DASHBOARD
-3. MEMASUKKAN KATEGORI LEWAT INSERT DATA
-4. MEMBUAT DATA PRODUK TERLEBIH DAHULU PADA INSERT DATA
-5. KETIKA PEMILIK USAHA MENYUPLAI, PEMILIK USAHA DI ARAHKAN KE TRANSAKSI PEMBELIAN UNTUK MENGISI STOK PADA DATA PRODUK YANG SUDAH DIBUAT PADA NOMER 4
+3. MEMASUKKAN KATEGORI TERLEBIH DAHULU PADA INSERT DATA
+4. MEMBUAT DATA PRODUK PADA INSERT DATA
+5. KETIKA PEMILIK USAHA INGIN MENYUPLAI, PEMILIK USAHA KE MENU TRANSAKSI PEMBELIAN UNTUK MENGISI STOK PADA DATA PRODUK YANG SUDAH DIBUAT PADA NOMER 4
 6. KETIKA PEMBELI SUDAH MELAKUKAN TRANSAKSI, MENUJU KE HALAMAN TRANSAKSI PENJUALAN UNTUK NANTINYA DICATAT KE LAPORAN PENJUALAN
-7. LAPORAN PENJUALAN BISA DICARI 2 OPSI : 1.) PILIH HARI, BULAN, TAHUN DAN BULAN 2.) BULAN DAN TAHUN SAJA
-8. PROFIL TOKO UNTUK MENGISI BIO TOKO
+7. LAPORAN PENJUALAN BISA DICARI PADA TABEL SEARCH
+8. MENU SETTING UNTUK MENGUBAH NAMA TOKO
