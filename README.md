@@ -11,30 +11,36 @@ Sebelum menjalankan aplikasi ini, pastikan Anda telah menginstal :
 ## ⚙️ Instalasi
 
 Jalankan perintah berikut untuk mengunduh dan mengatur aplikasi di terminal :
-# Install Dependencies Backend (PHP)
+### Install Dependencies Backend (PHP) :
 ```bash 
 composer install
 ```
-```bash Install Dependencies Frontend (Node.js)
+### Install Dependencies Frontend (Node.js) :
+```bash 
 npm install
 ```
-```bash Generate Application Key
+### Generate Application Key :
+```bash 
 php artisan key:generate
 ```
-```bash Setup & Migrate Database (SQLite)
+### Setup & Migrate Database (SQLite) :
+```bash 
 php artisan migrate
 ```
-```bash Setup database.sqlite
+### Setup database.sqlite :
+```bash 
 php artisan db:seed
 ```
+
 ## ⚙️ Menjalankan aplikasi 
 
 Jika sudah menjalankan perintah diatas, jalankan aplikasi dari terminal
-
-```bash Menjalankan Aplikasi di terminal pertama
+### Menjalankan Aplikasi di terminal pertama :
+```bash 
 php artisan serve
 ```
-```bash Menjalankan Aplikasi di terminal kedua
+### Menjalankan Aplikasi di terminal kedua :
+```bash 
 npm run dev
 ```
 
@@ -45,11 +51,13 @@ npm run dev
 
 ## ➡️ ALUR KINERJA SISTEM :
 1. LOGIN
-```bash Admin
+###  Admin :   
+```bash
 id : admin@example.com
 pass : rega123
 ```
-```bash Karyawan
+###  Karyawan :
+```bash
 id : karyawan@example.com
 pass : karyawan123
 ```
