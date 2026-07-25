@@ -1,9 +1,7 @@
-@extends("home")
-
-@section("home_content")
+<?php $__env->startSection("home_content"); ?>
 <div class="stagger" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;">
 
-    @can("admin")
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check("admin")): ?>
     <div class="stat-card">
         <div class="stat-card-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
@@ -11,12 +9,12 @@
             </svg>
         </div>
         <div class="stat-card-body">
-            <div class="stat-card-value">{{ $category_count }}</div>
+            <div class="stat-card-value"><?php echo e($category_count); ?></div>
             <div class="stat-card-label">Kategori</div>
             <div class="stat-card-sub">Total kategori produk</div>
         </div>
     </div>
-    @endcan
+    <?php endif; ?>
 
     <div class="stat-card">
         <div class="stat-card-icon">
@@ -25,13 +23,13 @@
             </svg>
         </div>
         <div class="stat-card-body">
-            <div class="stat-card-value">{{ $product_count }}</div>
+            <div class="stat-card-value"><?php echo e($product_count); ?></div>
             <div class="stat-card-label">Produk</div>
             <div class="stat-card-sub">Total produk tersedia</div>
         </div>
     </div>
 
-    @can("admin")
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check("admin")): ?>
     <div class="stat-card">
         <div class="stat-card-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
@@ -40,12 +38,13 @@
             </svg>
         </div>
         <div class="stat-card-body">
-            <div class="stat-card-value">{{ $report_count }}</div>
+            <div class="stat-card-value"><?php echo e($report_count); ?></div>
             <div class="stat-card-label">Laporan</div>
             <div class="stat-card-sub">Total laporan tercatat</div>
         </div>
     </div>
-    @endcan
+    <?php endif; ?>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("home", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\DOWNLOAD\john-bag-shop-master\john-bag-shop-master\resources\views/dashboard.blade.php ENDPATH**/ ?>

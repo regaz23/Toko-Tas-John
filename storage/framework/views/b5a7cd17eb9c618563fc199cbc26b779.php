@@ -1,19 +1,17 @@
-@extends("home")
-
-@section("home_content")
+<?php $__env->startSection("home_content"); ?>
 <div class="animate-fade-up">
 
-    {{-- Flash messages --}}
-    @if (session('success'))
+    
+    <?php if(session('success')): ?>
     <div class="alert alert-success">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
         </svg>
-        <span><strong>Berhasil!</strong> {{ session('success') }}</span>
+        <span><strong>Berhasil!</strong> <?php echo e(session('success')); ?></span>
     </div>
-    @endif
+    <?php endif; ?>
 
-    {{-- Page header --}}
+    
     <div class="page-header">
         <div class="page-header-left">
             <h1 class="page-title">Laporan Transaksi</h1>
@@ -21,7 +19,7 @@
         </div>
     </div>
 
-    {{-- Summary stat cards --}}
+    
     <div class="stagger" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px;">
         <div class="stat-card">
             <div class="stat-card-icon" style="background:rgba(91,110,245,.12);color:var(--accent);">
@@ -30,7 +28,7 @@
                 </svg>
             </div>
             <div class="stat-card-body">
-                <div class="stat-card-value">{{ $total_sell }}</div>
+                <div class="stat-card-value"><?php echo e($total_sell); ?></div>
                 <div class="stat-card-label">Total Produk Terjual</div>
             </div>
         </div>
@@ -41,7 +39,7 @@
                 </svg>
             </div>
             <div class="stat-card-body">
-                <div class="stat-card-value">Rp {{ number_format($total_sell_price, 0, ',', '.') }}</div>
+                <div class="stat-card-value">Rp <?php echo e(number_format($total_sell_price, 0, ',', '.')); ?></div>
                 <div class="stat-card-label">Total Harga Jual</div>
             </div>
         </div>
@@ -52,7 +50,7 @@
                 </svg>
             </div>
             <div class="stat-card-body">
-                <div class="stat-card-value">Rp {{ number_format($total_buy_price, 0, ',', '.') }}</div>
+                <div class="stat-card-value">Rp <?php echo e(number_format($total_buy_price, 0, ',', '.')); ?></div>
                 <div class="stat-card-label">Total Harga Beli</div>
             </div>
         </div>
@@ -64,13 +62,13 @@
                 </svg>
             </div>
             <div class="stat-card-body">
-                <div class="stat-card-value" style="color:var(--success);">Rp {{ number_format($totalBenefit, 0, ',', '.') }}</div>
+                <div class="stat-card-value" style="color:var(--success);">Rp <?php echo e(number_format($totalBenefit, 0, ',', '.')); ?></div>
                 <div class="stat-card-label">Keuntungan Bersih</div>
             </div>
         </div>
     </div>
 
-    {{-- Detail transaction table --}}
+    
     <div class="card">
         <div class="card-header">
             <div class="card-header-icon">
@@ -96,35 +94,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($transactions as $tran)
+                    <?php $__currentLoopData = $transactions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tran): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td><span style="font-family:monospace;font-size:12px;color:var(--text-muted);">{{ sprintf("B%04d", $tran->id) }}</span></td>
-                        <td><span style="font-family:monospace;font-size:12px;color:var(--text-muted);">{{ sprintf("T%04d", $tran->product->id) }}</span></td>
-                        <td><strong>{{ $tran->product->name }}</strong></td>
-                        <td>{{ $tran->product->category->name }}</td>
-                        <td>Rp {{ number_format($tran->product->sell_price, 0, ',', '.') }}</td>
-                        <td>Rp {{ number_format($tran->product->buy_price, 0, ',', '.') }}</td>
-                        <td style="font-weight:600;">{{ $tran->count }}</td>
-                        <td>{{ $tran->user->name }}</td>
-                        <td style="font-size:12px;color:var(--text-muted);">{{ $tran->created_at }}</td>
+                        <td><span style="font-family:monospace;font-size:12px;color:var(--text-muted);"><?php echo e(sprintf("B%04d", $tran->id)); ?></span></td>
+                        <td><span style="font-family:monospace;font-size:12px;color:var(--text-muted);"><?php echo e(sprintf("T%04d", $tran->product->id)); ?></span></td>
+                        <td><strong><?php echo e($tran->product->name); ?></strong></td>
+                        <td><?php echo e($tran->product->category->name); ?></td>
+                        <td>Rp <?php echo e(number_format($tran->product->sell_price, 0, ',', '.')); ?></td>
+                        <td>Rp <?php echo e(number_format($tran->product->buy_price, 0, ',', '.')); ?></td>
+                        <td style="font-weight:600;"><?php echo e($tran->count); ?></td>
+                        <td><?php echo e($tran->user->name); ?></td>
+                        <td style="font-size:12px;color:var(--text-muted);"><?php echo e($tran->created_at); ?></td>
                     </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
     </div>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section("extra_scripts")
+<?php $__env->startSection("extra_scripts"); ?>
 <script src="/libs/jszip.min.js"></script>
 <script src="/libs/dataTables.buttons.min.js"></script>
 <script src="/libs/buttons.html5.min.js"></script>
 <script src="/libs/buttons.print.min.js"></script>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section("script")
+<?php $__env->startSection("script"); ?>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         new DataTable("#report-table", {
@@ -136,4 +134,5 @@
         });
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("home", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\DOWNLOAD\john-bag-shop-master\john-bag-shop-master\resources\views/report/index.blade.php ENDPATH**/ ?>

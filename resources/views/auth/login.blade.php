@@ -1,32 +1,57 @@
 @extends('layout')
 
 @section("content")
-<div class="max-w-md m-auto pt-[100px]">
-    <img src="{{asset('/logo.png')}}" class="m-auto" alt="">
-    <form action="/auth/signin" method="POST">
-        @csrf
-        <div class="flex flex-col gap-8 mt-12">
-            <div>
-                <input type="text" id="email"
-                    class="border-b-2 border-[#434B6A] text-gray-900 text-sm block w-full p-2.5 outline-none"
-                    placeholder="EMAIL" name="email" value="{{ old('email') }}" />
+<div class="login-page">
+    <div class="login-card">
 
-                @error('email')
-                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{$message}}</p>
-                @enderror
-            </div>
-            <div>
-                <input type="password" id="password"
-                    class="border-b-2 border-[#434B6A] text-gray-900 text-sm block w-full p-2.5 outline-none"
-                    placeholder="PASSWORD" name="password" />
-
-                @error('password')
-                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message }}.</p>
-                @enderror
-            </div>
-            <button type="submit"
-                class="text-white bg-[#434B6A] font-medium rounded-full text-sm px-5 py-2.5 self-center mt-8"
-                id="submit">Login</button>
+        {{-- Logo & Brand --}}
+        <div class="login-logo">
+            <img src="{{ asset('/logo.png') }}" alt="John Bag Shop Logo">
+            <div class="login-logo-name">John Bag Shop</div>
+            <div class="login-logo-sub">Sistem Manajemen Toko</div>
         </div>
-    </form>
-    @endsection
+
+        <p class="login-form-title">Masuk ke akun Anda</p>
+
+        <form action="/auth/signin" method="POST">
+            @csrf
+
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Masukkan email..."
+                    value="{{ old('email') }}"
+                    autocomplete="email"
+                />
+                @error('email')
+                <p class="form-error">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Masukkan password..."
+                    autocomplete="current-password"
+                />
+                @error('password')
+                <p class="form-error">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <button type="submit" id="submit" class="login-btn">
+                Masuk
+            </button>
+        </form>
+
+    </div>
+</div>
+@endsection

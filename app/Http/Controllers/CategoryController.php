@@ -32,11 +32,11 @@ class CategoryController extends Controller
         $request->validate([
             'category_name' => 'required|string|max:255',
         ]);
-    
+
         $category = new Category();
         $category->name = $request->input('category_name');
         $category->save();
-    
+
         return redirect()->route('category.index')->with('success', 'Category created successfully.');
     }
 

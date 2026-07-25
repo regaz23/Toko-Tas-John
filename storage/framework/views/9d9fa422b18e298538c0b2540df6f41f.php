@@ -1,27 +1,25 @@
-@extends("home")
-
-@section("home_content")
+<?php $__env->startSection("home_content"); ?>
 <div class="animate-fade-up" style="max-width:560px;">
 
-    {{-- Flash messages --}}
-    @if (session('success'))
+    
+    <?php if(session('success')): ?>
     <div class="alert alert-success">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
         </svg>
-        <span><strong>Berhasil!</strong> {{ session('success') }}</span>
+        <span><strong>Berhasil!</strong> <?php echo e(session('success')); ?></span>
     </div>
-    @endif
-    @if (session('error'))
+    <?php endif; ?>
+    <?php if(session('error')): ?>
     <div class="alert alert-error">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
         </svg>
-        <span><strong>Error!</strong> {{ session('error') }}</span>
+        <span><strong>Error!</strong> <?php echo e(session('error')); ?></span>
     </div>
-    @endif
+    <?php endif; ?>
 
-    {{-- Page header --}}
+    
     <div class="page-header">
         <div class="page-header-left">
             <h1 class="page-title">Pengaturan Toko</h1>
@@ -42,7 +40,7 @@
 
         <div class="card-body">
             <form action="/setting" method="POST">
-                @csrf
+                <?php echo csrf_field(); ?>
 
                 <div class="form-group">
                     <label class="form-label" for="name">Nama Toko</label>
@@ -52,12 +50,12 @@
                         name="name"
                         class="form-control"
                         placeholder="Masukkan nama toko..."
-                        value="{{ isset($web_title) ? $web_title : old('name') }}"
+                        value="<?php echo e(isset($web_title) ? $web_title : old('name')); ?>"
                         required
                     />
-                    @if ($errors->has('name'))
-                    <p class="form-error">{{ $errors->first('name') }}</p>
-                    @endif
+                    <?php if($errors->has('name')): ?>
+                    <p class="form-error"><?php echo e($errors->first('name')); ?></p>
+                    <?php endif; ?>
                     <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">
                         Nama ini akan ditampilkan di seluruh halaman aplikasi.
                     </p>
@@ -77,4 +75,5 @@
     </div>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("home", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\DOWNLOAD\john-bag-shop-master\john-bag-shop-master\resources\views/setting/form.blade.php ENDPATH**/ ?>

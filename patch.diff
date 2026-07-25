@@ -1,0 +1,15 @@
+﻿--- resources/views/category/index.blade.php
++++ resources/views/category/index.blade.php
+@@ -69,11 +69,11 @@
+                         <td><strong>{{ $cat->name }}</strong></td>
+                         <td style="font-size:12px;color:var(--text-muted);">{{ $cat->created_at }}</td>
+                         <td style="font-size:12px;color:var(--text-muted);">{{ $cat->updated_at }}</td>
+-                        <td style="text-align: center;">`n                            <div style="display:flex;gap:6px;justify-content:center;">
++                        <td style="text-align: center;">
++                            <div style="display:flex;gap:6px;justify-content:center;">
+                                 <a href="/category/edit/{{ $cat->id }}" class="btn btn-warning btn-sm">Edit</a>
+                                 <button class="btn btn-danger btn-sm" onclick="confirmDelete('/category/destroy/{{ $cat->id }}')">Hapus</button>
+                             </div>
+                         </td>
+                     </tr>
+                     @endforeach

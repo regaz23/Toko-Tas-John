@@ -1,33 +1,57 @@
 @extends("home")
 
 @section("home_content")
-<div class="px-2 py-6 flex flex-col gap-4">
-    <h1 class="text-4xl text-[#434B6A] font-medium">Data Kategori</h1>
-    <div class="bg-white rounded overflow-hidden">
-        <div class="bg-[#434B6A] p-3 flex flex-row gap-2 items-center">
-            <x-bi-box class="" fill="#FFF" />
-            <h4 class="text-white">{{ isset($category) ? 'Edit' : 'Add' }} Kategori</h4>
+    <div class="animate-fade-up" style="max-width: 520px;">
+
+        <div class="page-header">
+            <div class="page-header-left">
+                <h1 class="page-title">{{ isset($category) ? 'Edit Kategori' : 'Tambah Kategori' }}</h1>
+                <p class="page-subtitle">
+                    {{ isset($category) ? 'Perbarui nama kategori' : 'Tambahkan kategori produk baru' }}
+                </p>
+            </div>
         </div>
-        <form class="px-6 py-2 max-w-screen-md" action="/category/{{ isset($category) ? 'update/' . $category->id : 'store' }}" method="POST">
-            @csrf
-            <div class="mb-5">
-                <label for="category_name" class="block mb-2 text-sm font-medium text-gray-900">Category name</label>
-                <input type="text" id="category_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Category name" name="category_name" value="{{ isset($category) ? $category->name : old('category_name') }}" required />
-                @if ($errors->has('category_name'))
-                    <span class="text-red-500 text-sm">{{ $errors->first('category_name') }}</span>
-                @endif
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M4.5 2A1.5 1.5 0 0 0 3 3.5v9A1.5 1.5 0 0 0 4.5 14h7a1.5 1.5 0 0 0 1.5-1.5v-7l-4-4H4.5zm0 1H9v3.5a.5.5 0 0 0 .5.5H13v5.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                </div>
+                <span class="card-header-title">{{ isset($category) ? 'Form Edit Kategori' : 'Form Kategori Baru' }}</span>
             </div>
-            <div class="flex flex-row gap-2 justify-end">
-                <button type="submit" class="bg-[{{ isset($category) ? '#F2A007' : '#19427D' }}] text-white px-6 py-2 flex text-md items-center gap-1 rounded">
-                    <x-bi-plus class="w-8 h-8" />
-                    {{ isset($category) ? 'Edit' : 'Add' }} Data
-                </button>
-                <button onclick="history.back()" class="text-[#434B6A] px-6 py-2 flex text-md items-center gap-1 rounded">
-                    Cancel
-                </button>
+
+            <div class="card-body">
+                <form action="/category/{{ isset($category) ? 'update/' . $category->id : 'store' }}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <label class="form-label" for="category_name">Nama Kategori</label>
+                        <input type="text" id="category_name" name="category_name" class="form-control"
+                            placeholder="Masukkan nama kategori..."
+                            value="{{ isset($category) ? $category->name : old('category_name') }}" required />
+                        @if ($errors->has('category_name'))
+                            <p class="form-error">{{ $errors->first('category_name') }}</p>
+                        @endif
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" onclick="history.back()" class="btn btn-ghost">Batal</button>
+                        <button type="submit" class="btn {{ isset($category) ? 'btn-warning' : 'btn-primary' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                            {{ isset($category) ? 'Simpan Perubahan' : 'Tambah Kategori' }}
+                        </button>
+                    </div>
+
+                </form>
             </div>
-        </form>
+        </div>
 
     </div>
-</div>
 @endsection

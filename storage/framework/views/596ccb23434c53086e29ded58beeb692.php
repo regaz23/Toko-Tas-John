@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 
 <head>
     <meta charset="utf-8">
@@ -15,9 +15,9 @@
 
     <!-- Styles / Scripts -->
     <!-- jQuery + DataTables (local — no CDN latency) -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
+    <?php if(file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot'))): ?>
+        <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php else: ?>
         <style>
             /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
             *,
@@ -906,11 +906,11 @@
                 }
             }
         </style>
-    @endif
+    <?php endif; ?>
 </head>
 
 <body>
-    @yield("content")
+    <?php echo $__env->yieldContent("content"); ?>
 
     <!-- jQuery + DataTables (local — no CDN latency) -->
     <script src="/libs/jquery.min.js"></script>
@@ -918,7 +918,7 @@
     <script src="/libs/dataTables.responsive.min.js"></script>
     <script src="/libs/responsive.dataTables.min.js"></script>
 
-    @yield("extra_scripts")
+    <?php echo $__env->yieldContent("extra_scripts"); ?>
 
     <script>
         // Scripts at bottom of body — DOM is already fully available here
@@ -936,8 +936,9 @@
             new DataTable(el, { responsive: true, pageLength: 25 });
         });
     </script>
-    @yield("script")
-@include('components.toast')
+    <?php echo $__env->yieldContent("script"); ?>
+<?php echo $__env->make('components.toast', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </body>
 
 </html>
+<?php /**PATH D:\DOWNLOAD\john-bag-shop-master\john-bag-shop-master\resources\views/layout.blade.php ENDPATH**/ ?>
